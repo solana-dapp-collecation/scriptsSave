@@ -5,7 +5,6 @@ import {insertDb, updateDb, checkDbForOwner} from "./dbOperations";
 import * as wallets from "./testWallets.json";
 import * as tokenData from "./tokenInfoBackup.json";
 
-var solAddressArvind= new PublicKey("Gaw5HBXFe2W9uepHQ8ehGpHQ6eqEvAswdt9BHzPnet69");
 var connection = new Connection("https://solana-api.projectserum.com");
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -122,16 +121,15 @@ async function formatRecurringData(dbData, apiResponse){
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-//async function mainF(){
-//  for (var i =0; i<124; i++){
-//    let address = new PublicKey(wallets.wallets[i]);
-//    console.log("Wallet: " +i);
-//    await sleep(200);
-//    await collectAndSaveData(address);
-//}
-//}
-//mainF();
-collectAndSaveData(solAddressArvind);
+async function mainF(){
+  for (var i =0; i<wallets.wallets.length; i++){
+    let address = new PublicKey(wallets.wallets[i]);
+    console.log("Wallet: " +i);
+    await sleep(200);
+    await collectAndSaveData(address);
+}
+}
+mainF();
 
 
 

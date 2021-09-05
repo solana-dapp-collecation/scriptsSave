@@ -1,0 +1,8 @@
+This script is resonsible for saving the data in the database everyday at 12am. Check implementation of
+the function collectAndSaveData() to see how we use solana api's to get details of a wallet.
+
+testWallets.json has the list of wallets we have indexed. Every time a new user logs on, the api will add 
+their wallet address to this list so that it is indexed subsequently.
+
+Check https://github.com/SOL-CAT/walletApis for apis that is used by the UI and how it uses the same 
+collectAndSaveData() function that is present here for a new user.
